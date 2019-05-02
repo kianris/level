@@ -8,7 +8,7 @@ defmodule LevelWeb.UserController do
   alias Level.Schemas.User
   alias Level.Users
 
-  plug :check_feature_flag
+#  plug :check_feature_flag
 
   def new(conn, _params) do
     case conn.assigns[:current_user] do
@@ -31,7 +31,7 @@ defmodule LevelWeb.UserController do
 
     case Users.create_user_with_demo(params) do
       {:ok, %{user: user, space: space}} ->
-        Users.track_analytics_event(user, "Signed up via marketing site")
+ #       Users.track_analytics_event(user, "Signed up via marketing site")
 
         conn
         |> LevelWeb.Auth.sign_in(user)
